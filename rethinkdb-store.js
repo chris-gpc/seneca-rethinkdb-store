@@ -140,7 +140,8 @@ module.exports = function(opts) {
         console.log('do_update', prev, rdent)
         var obj = rdent;
 
-        r.db(db).table(table).get(rdent.id).update(obj, {returnChanges: true}).run(conn, function(err, result) {
+        //r.db(db).table(table).get(rdent.id).update(obj, {returnChanges: true}).run(conn, function(err, result) {
+        r.db(db).table(table).get(rdent.id).replace(obj, {returnChanges: true}).run(conn, function(err, result) {
           //console.log(result.changes)
           if(err)
             cb(err);
