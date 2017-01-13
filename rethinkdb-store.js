@@ -135,7 +135,9 @@ module.exports = function(opts) {
       }
 
       function do_update(prev, rdent) {
-        var obj = seneca.util.deepextend(prev, rdent);
+        //var obj = seneca.util.deepextend(prev, rdent);
+        // Overwrite not extend
+        var obj = rdent;
 
         r.db(db).table(table).get(rdent.id).update(obj, {returnChanges: true}).run(conn, function(err, result) {
           //console.log(result.changes)
